@@ -12,8 +12,9 @@ export class TodoService {
     return this.prismaService.todo.create({ data: createTodoDto });
   }
 
+  // need to fix completed bug here
   findAll(completed?: boolean): Promise<Todo[]> {
-    if (!completed) {
+    if (completed == false) {
       return this.prismaService.todo.findMany();
     } else {
       return this.prismaService.todo.findMany({
